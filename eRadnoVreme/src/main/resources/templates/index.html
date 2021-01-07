@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>eRV : Radnici</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <div align="center" id="radnici">
+        <h1>RADNICI</h1>
+        <br/><br/>
+        <table border="1" cellpadding="10">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>JMBG</th>
+                <th>Prezime i ime</th>
+                <th>Datum rodjenja</th>
+                <th>Zanimanje</th>
+                <th>Stepen strucne spreme</th>
+                <th>Identifikator casova rada</th>
+                <th>Id koeficijent</th>
+                <th>Id radnog mesta</th>
+                <th>CRUD</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="radnik : ${listRadnik}">
+                <td th:text="${radnik.ID_RADNIK}">ID</td>
+                <td th:text="${radnik.JMBG}">JMBG</td>
+                <td th:text="${radnik.PREZIME_IME}">Prezime i ime</td>
+                <td th:text="${radnik.DATUM_RODJENJA}">Datum rodjenja</td>
+                <td th:text="${radnik.ZANIMANJE}">Zanimanje</td>
+                <td th:text="${radnik.STEPEN_STRUCNE_SPREME}">SSS</td>
+                <td th:text="${radnik.IDENTIFIKATOR_CASOVA_RADA}">ID casova rada</td>
+                <td th:text="${radnik.ID_KOEFICIJENT}">ID Koeficijent</td>
+                <td th:text="${radnik.ID_RADNO_MESTO}">ID Radno mesto</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${radnik.ID_RADNIK}}">Edit</a>
+                    <!--&nbsp;&nbsp;&nbsp;
+                    <a th:href="/@{'/delete/' + ${radnik.id_radnik}}">Delete</a>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/new">Dodaj novog radnika</a>
+    </div>
+
+
+</body>
+</html>

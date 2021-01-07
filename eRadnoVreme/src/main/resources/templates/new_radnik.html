@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>eRV : Novi radnik</title>
+    <style>
+        table > input {width: 400px;}
+        #dugme{
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div align="center" id="novi_radnik">
+        <h1>NOVI RADNIK</h1>
+        <br/><br/>
+
+        <form action="#" th:action="@{/save}" th:object="${radnik}" method="post">
+            <table border="1" cellpadding="10">
+                <tr>
+                    <td>ID_RADNIK</td>
+                    <td><input type="number" required min="0" step="1" th:field="*{ID_RADNIK}" placeholder="ID radnika"></td>
+                </tr>
+                <tr>
+                    <td>JMBG</td>
+                    <td><input type="text" required pattern="^([0-9]{13})$" th:field="*{JMBG}" placeholder="JMBG radnika"></td>
+                </tr>
+                <tr>
+                    <td>Prezime i ime</td>
+                    <td><input type="text" required pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{PREZIME_IME}" placeholder="Prezime i ime radnika"></td>
+                </tr>
+                <tr>
+                    <td>Datum rodjenja</td>
+                    <td><input type="date" required th:field="*{DATUM_RODJENJA}" placeholder="Datum rodjenja radnika"></td>
+                </tr>
+                <tr>
+                    <td>Zanimanje</td>
+                    <td><input type="text" required pattern="^([A-Za-z]\.{0,50}[ ]?)+$" th:field="*{ZANIMANJE}" placeholder="Zanimanje radnika"></td>
+                </tr>
+                <tr>
+                    <td>Stepen strucne spreme</td>
+                    <td><input type="text" required pattern="^([0-9]{1}\.[A-z0-9]{1,2})$" th:field="*{STEPEN_STRUCNE_SPREME}" placeholder="Stepen strucne spreme radnika"></td>
+                </tr>
+                <tr>
+                    <td>Identifikator</td>
+                    <td><input type="number" required min="0" max="9" th:field="*{IDENTIFIKATOR_CASOVA_RADA}"></td>
+                </tr>
+                <tr>
+                    <td>ID koeficijent</td>
+                    <td><input type="number" required min="0" max="9" th:field="*{ID_KOEFICIJENT}"></td>
+                </tr>
+                <tr>
+                    <td>ID radnog mesta</td>
+                    <td><input type="number" required min="0" max="9" th:field="*{ID_RADNO_MESTO}"></td>
+                </tr>
+                <tr>
+                    <td th:colspan="2"><button id="dugme" align="center" type="submit">Dodaj radnika</button> </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+
+</body>
+</html>
