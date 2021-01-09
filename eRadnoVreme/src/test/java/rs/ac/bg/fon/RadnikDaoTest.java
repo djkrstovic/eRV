@@ -51,12 +51,12 @@ class RadnikDaoTest {
         Radnik radnik = new Radnik();
         radnik.setID_RADNIK(23);
         radnik.setJMBG("1234567888999");
-        radnik.setPREZIME_IME("Milan M Markovic");
+        radnik.setPREZIME_IME("Milan Markovic");
         radnik.setDATUM_RODJENJA("12-JAN-67");
         radnik.setZANIMANJE("Perac prozora");
         radnik.setSTEPEN_STRUCNE_SPREME("7.3");
         radnik.setIDENTIFIKATOR_CASOVA_RADA(5);
-        radnik.setID_KOEFICIJENT(2);
+        radnik.setID_KOEFICIJENT(3);
         radnik.setID_RADNO_MESTO(7);
 
         dao.update(radnik);

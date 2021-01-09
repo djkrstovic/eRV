@@ -7,6 +7,8 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
+
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -47,15 +49,21 @@ public class RadnikDao {
         return radnik;
     }
 
-    public void update(Radnik radnik){
-        String sql = "UPDATE RADNIK SET JMBG=:JMBG, PREZIME_IME=:PREZIME_IME, DATUM_RODJENJA=:DATUM_RODJENJA," +
-                "ZANIMANJE=:ZANIMANJE, STEPEN_STRUCNE_SPREME=:STEPEN_STRUCNE_SPREME," +
-                "IDENTIFIKATOR_CASOVA_RADA=:IDENTIFIKATOR_CASOVA_RADA, ID_KOEFICIJENT=:ID_KOEFICIJENT," +
-                "ID_RADNO_MESTO=:ID_RADNO_MESTO";
-        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(radnik);
-        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+    public void update(Radnik radnik) {
 
-        template.update(sql, param);
+            String sql = "UPDATE RADNIK SET JMBG=:JMBG, PREZIME_IME=:PREZIME_IME, DATUM_RODJENJA=:DATUM_RODJENJA," +
+                    "ZANIMANJE=:ZANIMANJE, STEPEN_STRUCNE_SPREME=:STEPEN_STRUCNE_SPREME," +
+                    "IDENTIFIKATOR_CASOVA_RADA=:IDENTIFIKATOR_CASOVA_RADA, ID_KOEFICIJENT=:ID_KOEFICIJENT," +
+                    "ID_RADNO_MESTO=:ID_RADNO_MESTO WHERE ID_RADNIK =:ID_RADNIK";
+
+                BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(radnik);
+                NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
+
+                template.update(sql, param);
+
+
+
+
 
     }
 

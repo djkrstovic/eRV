@@ -1,6 +1,7 @@
 package rs.ac.bg.fon;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -50,7 +51,20 @@ public class AppController {
         return mav;
     }
 
+    /**/
 
+    @RequestMapping(value="/update", method = RequestMethod.POST)
+    public String update(@ModelAttribute("radnik") Radnik radnik) {
+        try {
+            dao.update(radnik);
+            return "redirect:/";
+        }catch (DataAccessException da){
+            System.out.println("Greska: " + da.getCause());
+            return "update";
+        }
+
+
+    }
 
 
 }
