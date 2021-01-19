@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>eRV : Mesecna evidencija</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/">Radnici</a></li>
+        <li><a href="/klasifikacija">Klasifikacija</a></li>
+        <li><a href="/vrstaPrimanja">Vrsta primanja</a></li>
+        <li><a href="/koeficijent">Koeficijent</a></li>
+
+    </ul>
+
+    <div align="center" id="koeficijent">
+        <h1>Radno mesto</h1>
+        <br/><br/>
+        <table border="1" cellpadding="10">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Mesec</th>
+                <th>Prezime i ime</th>
+                <th>ID Radnika</th>
+                <th>Procenjena zarada</th>
+                <th>CRUD</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="mesecnaEvidencija : ${listMesecnaEvidencija}">
+                <td th:text="${mesecnaEvidencija.ID_MESECNA_EVIDENCIJA}">ID</td>
+                <td th:text="${mesecnaEvidencija.MESEC}">Mesec</td>
+                <td th:text="${mesecnaEvidencija.PREZIME_IME}">Prezime i ime</td>
+                <td th:text="${mesecnaEvidencija.ID_RADNIK}">ID Radnika</td>
+                <td th:text="${mesecnaEvidencija.PROCENJENA_ZARADA}">Procenjena zarada</td>
+
+                <td>
+                    <a th:href="@{'/editMesecnaEvidencija/' + ${mesecnaEvidencija.ID_MESECNA_EVIDENCIJA}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/deleteMesecnaEvidencija/' + ${mesecnaEvidencija.ID_MESECNA_EVIDENCIJA}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/newMesecnaEvidencija">Dodaj novu mesecnu evidenciju</a>
+    </div>
+
+
+</body>
+</html>

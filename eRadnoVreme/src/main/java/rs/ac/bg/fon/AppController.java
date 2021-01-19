@@ -291,4 +291,63 @@ public class AppController {
         }
     }
 
+    // MESECNA EVIDENCIJA
+    @Autowired
+    private MesecnaEvidencijaDao daoME;
+
+    @RequestMapping("/mesecnaEvidencija")
+    public String viewHomePageMesecnaEvidencija(Model modelME){
+
+        List<MesecnaEvidencija> listMesecnaEvidencija = daoME.list();
+        modelME.addAttribute("listMesecnaEvidencija", listMesecnaEvidencija);
+
+        return "/mesecnaEvidencija";
+
+    }
+
+    @RequestMapping("/newMesecnaEvidencija")
+    public String showNewFormME(Model modelME){
+        MesecnaEvidencija mesecnaEvidencija = new MesecnaEvidencija();
+        modelME.addAttribute("mesecnaEvidencija", mesecnaEvidencija);
+        return "new_mesecnaEvidencija";
+
+    }
+
+    @RequestMapping(value="/saveMesecnaEvidencija", method = RequestMethod.POST)
+    public String saveME(@ModelAttribute("mesecnaEvidencija") MesecnaEvidencija mesecnaEvidencija){
+        daoME.saveME(mesecnaEvidencija);
+
+        return "redirect:/mesecnaEvidencija";
+    }
+
+    @RequestMapping("/editMesecnaEvidencija/{ID_MESECNA_EVIDENCIJA}")
+    public ModelAndView showEditFormME(@PathVariable(name = "ID_MESECNA_EVIDENCIJA") long ID_MESECNA_EVIDENCIJA){
+        ModelAndView mavME = new ModelAndView("edit_mesecnaEvidencija");
+        MesecnaEvidencija mesecnaEvidencija = daoME.getME(ID_MESECNA_EVIDENCIJA);
+        mavME.addObject("mesecnaEvidencija", mesecnaEvidencija);
+
+        return mavME;
+    }
+
+
+    @RequestMapping(value="/updateMesecnaEvidencija", method = RequestMethod.POST)
+    public String updateME(@ModelAttribute("mesecnaEvidencija") MesecnaEvidencija mesecnaEvidencija) {
+        daoME.updateME(mesecnaEvidencija);
+        return "redirect:/mesecnaEvidencija";
+    }
+
+    @RequestMapping("/deleteMesecnaEvidencija/{ID_RADNO_MESTO}")
+    public String deleteME(@PathVariable(name = "ID_RADNO_MESTO") long ID_RADNO_MESTO) {
+        try {
+            daoME.deleteME(ID_RADNO_MESTO);
+            return "redirect:/mesecnaEvidencija";
+        }catch (DataAccessException da){
+            System.out.println("Greska: " + da.getCause());
+            return "../error/error_delME.html";
+        }
+    }
+
+    // OSTVARENI CASOVI
+
+
 }
