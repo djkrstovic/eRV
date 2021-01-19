@@ -51,24 +51,18 @@ public class RadnikDao {
 
     public void update(Radnik radnik) {
 
-            String sql = "UPDATE RADNIK SET JMBG=:JMBG, PREZIME_IME=:PREZIME_IME, DATUM_RODJENJA=:DATUM_RODJENJA," +
-                    "ZANIMANJE=:ZANIMANJE, STEPEN_STRUCNE_SPREME=:STEPEN_STRUCNE_SPREME," +
-                    "IDENTIFIKATOR_CASOVA_RADA=:IDENTIFIKATOR_CASOVA_RADA, ID_KOEFICIJENT=:ID_KOEFICIJENT," +
-                    "ID_RADNO_MESTO=:ID_RADNO_MESTO WHERE ID_RADNIK =:ID_RADNIK";
+            String sql = "UPDATE RADNIK SET JMBG=:JMBG, PREZIME_IME=:PREZIME_IME, DATUM_RODJENJA=:DATUM_RODJENJA, ZANIMANJE=:ZANIMANJE, STEPEN_STRUCNE_SPREME=:STEPEN_STRUCNE_SPREME, IDENTIFIKATOR_CASOVA_RADA=:IDENTIFIKATOR_CASOVA_RADA, ID_KOEFICIJENT=:ID_KOEFICIJENT, ID_RADNO_MESTO=:ID_RADNO_MESTO WHERE ID_RADNIK =:ID_RADNIK";
 
                 BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(radnik);
                 NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
 
                 template.update(sql, param);
 
-
-
-
-
     }
 
     public void delete(long ID_RADNIK){
-
+        String sql = "DELETE FROM RADNIK WHERE ID_RADNIK = ?";
+        jdbcTemplate.update(sql, ID_RADNIK);
     }
 
 }

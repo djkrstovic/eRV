@@ -10,10 +10,39 @@
             display: block;
             margin: auto;
         }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
     </style>
 </head>
 <body>
+<ul>
+    <li><a href="/">Radnici</a></li>
+    <li><a href="/klasifikacija">Klasifikacija</a></li>
+    <li><a href="/vrstaPrimanja">Vrsta primanja</a></li>
 
+</ul>
     <div align="center" id="novi_radnik">
         <h1>NOVI RADNIK</h1>
         <br/><br/>
@@ -46,7 +75,7 @@
                 </tr>
                 <tr>
                     <td>Identifikator</td>
-                    <td><input type="number" required min="0" max="9" th:field="*{IDENTIFIKATOR_CASOVA_RADA}"></td>
+                    <td><input type="number" required min="0" max="99" th:field="*{IDENTIFIKATOR_CASOVA_RADA}"></td>
                 </tr>
                 <tr>
                     <td>ID koeficijent</td>
@@ -54,7 +83,7 @@
                 </tr>
                 <tr>
                     <td>ID radnog mesta</td>
-                    <td><input type="number" required min="0" max="9" th:field="*{ID_RADNO_MESTO}"></td>
+                    <td><input type="number" required min="0" max="99" th:field="*{ID_RADNO_MESTO}"></td>
                 </tr>
                 <tr>
                     <td th:colspan="2"><button id="dugme" align="center" type="submit">Dodaj radnika</button> </td>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>eRV : Vrsta primanja</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/">Radnici</a></li>
+        <li><a href="/klasifikacija">Klasifikacija</a></li>
+        <li><a href="/vrstaPrimanja">Vrsta primanja</a></li>
+
+    </ul>
+
+    <div align="center" id="vrstaPrimanja">
+        <h1>Vrsta primanja</h1>
+        <br/><br/>
+        <table border="1" cellpadding="10">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAZIV</th>
+                <th>CENA_RADA</th>
+                <th>ID KLASIFIKACIJA</th>
+                <th>CRUD</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vp : ${listVrstaPrimanja}">
+                <td th:text="${vp.ID_VRSTA_PRIMANJA}">ID</td>
+                <td th:text="${vp.NAZIV}">NAZIV</td>
+                <td th:text="${vp.CENA_RADA}">CENA RADA</td>
+                <td th:text="${vp.ID_KLASIFIKACIJA_CASOVA}">ID KLASIFIKACIJA</td>
+                <td>
+                    <a th:href="@{'/editVrstaPrimanja/' + ${vp.ID_VRSTA_PRIMANJA}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/deleteVrstaPrimanja/' + ${vp.ID_VRSTA_PRIMANJA}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/newVrstaPrimanja">Dodaj novu vrstu primanja</a>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>eRV : Klasifikacije</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/">Radnici</a></li>
+        <li><a href="/klasifikacija">Klasifikacija</a></li>
+        <li><a href="/vrstaPrimanja">Vrsta primanja</a></li>
+
+    </ul>
+
+    <div align="center" id="klasifikacija">
+        <h1>Klasifikacije</h1>
+        <br/><br/>
+        <table border="1" cellpadding="10">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Naziv</th>
+                <th>CRUD</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="klasfikacija : ${listKlasifikacija}">
+                <td th:text="${klasfikacija.ID_KLASIFIKACIJA_CASOVA}">ID</td>
+                <td th:text="${klasfikacija.NAZIV}">JMBG</td>
+                <td>
+                    <a th:href="@{'/editKlasfikacija/' + ${klasfikacija.ID_KLASIFIKACIJA_CASOVA}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/deleteKlasfikacija/' + ${klasfikacija.ID_KLASIFIKACIJA_CASOVA}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/newKlasifikacija">Dodaj novu klasifikaciju</a>
+    </div>
+
+
+</body>
+</html>

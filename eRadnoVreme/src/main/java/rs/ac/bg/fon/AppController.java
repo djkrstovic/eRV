@@ -16,7 +16,7 @@ import java.util.List;
 public class AppController {
     @Autowired
     private RadnikDao dao;
-
+// RADNIK
     @RequestMapping("/")
     public String viewHomePage(Model model){
 
@@ -60,11 +60,129 @@ public class AppController {
             return "redirect:/";
         }catch (DataAccessException da){
             System.out.println("Greska: " + da.getCause());
-            return "update";
+            return "../error/error_uik.html";
+        }
+    }
+
+    @RequestMapping("/delete/{ID_RADNIK}")
+    public String delete(@PathVariable(name = "ID_RADNIK") int ID_RADNIK) {
+        try {
+            dao.delete(ID_RADNIK);
+            return "redirect:/";
+        }catch(DataAccessException da){
+            System.out.println("Greska: " + da.getCause());
+            return "../error/error_delR.html";
         }
 
+    }
+// KLASFIKACIJA
+
+
+    @Autowired
+    private KlasifikacijaDao daoK;
+
+    @RequestMapping("/klasifikacija")
+    public String viewHomePageKlasifikacije(Model modelK){
+
+        List<Klasifikacija> listKlasifikacija = daoK.list();
+        modelK.addAttribute("listKlasifikacija", listKlasifikacija);
+
+        return "/klasifikacija";
 
     }
 
+    @RequestMapping("/newKlasifikacija")
+    public String showNewFormK(Model modelK){
+        Klasifikacija klasifikacija = new Klasifikacija();
+        modelK.addAttribute("klasifikacija", klasifikacija);
+        return "new_klasifikacija";
 
+    }
+
+    @RequestMapping(value="/saveKlasifikacija", method = RequestMethod.POST)
+    public String saveK(@ModelAttribute("klasifikacija") Klasifikacija klasifikacija){
+        daoK.saveK(klasifikacija);
+
+        return "redirect:/klasifikacija";
+    }
+
+    @RequestMapping("/editKlasfikacija/{ID_KLASIFIKACIJA_CASOVA}")
+    public ModelAndView showEditFormK(@PathVariable(name = "ID_KLASIFIKACIJA_CASOVA") long ID_KLASIFIKACIJA_CASOVA){
+        ModelAndView mavK = new ModelAndView("edit_klasifikacija");
+        Klasifikacija klasifikacija = daoK.getK(ID_KLASIFIKACIJA_CASOVA);
+        mavK.addObject("klasifikacija", klasifikacija);
+
+        return mavK;
+    }
+
+    /**/
+
+    @RequestMapping(value="/updateKlasifikacija", method = RequestMethod.POST)
+    public String updateK(@ModelAttribute("klasifikacija") Klasifikacija klasifikacija) {
+            daoK.updateK(klasifikacija);
+            return "redirect:/klasifikacija";
+    }
+
+    @RequestMapping("/deleteKlasfikacija/{ID_KLASIFIKACIJA_CASOVA}")
+    public String deleteK(@PathVariable(name = "ID_KLASIFIKACIJA_CASOVA") long ID_KLASIFIKACIJA_CASOVA) {
+        daoK.deleteK(ID_KLASIFIKACIJA_CASOVA);
+        return "redirect:/klasifikacija";
+    }
+// VRSTA PRIMANJA
+
+    @Autowired
+    private VrstaPrimanjaDao daoVP;
+
+    @RequestMapping("/vrstaPrimanja")
+    public String viewHomePagevrstaPrimanja(Model modelVP){
+
+        List<VrstaPrimanja> listVrstaPrimanja = daoVP.list();
+        modelVP.addAttribute("listVrstaPrimanja", listVrstaPrimanja);
+
+        return "/vrstaPrimanja";
+
+    }
+
+    @RequestMapping("/newVrstaPrimanja")
+    public String showNewFormVP(Model modelVP){
+        VrstaPrimanja vrstaPrimanja = new VrstaPrimanja();
+        modelVP.addAttribute("vrstaPrimanja", vrstaPrimanja);
+        return "new_VrstaPrimanja";
+
+    }
+
+    @RequestMapping(value="/saveVrstaPrimanja", method = RequestMethod.POST)
+    public String saveVP(@ModelAttribute("vrstaPrimanja") VrstaPrimanja vrstaPrimanja){
+        daoVP.saveVP(vrstaPrimanja);
+
+        return "redirect:/vrstaPrimanja";
+    }
+
+    @RequestMapping("/editVrstaPrimanja/{ID_VRSTA_PRIMANJA}")
+    public ModelAndView showEditFormVP(@PathVariable(name = "ID_VRSTA_PRIMANJA") long ID_VRSTA_PRIMANJA){
+        ModelAndView mavVP = new ModelAndView("edit_vrstaPrimanja");
+        VrstaPrimanja vrstaPrimanja = daoVP.getVP(ID_VRSTA_PRIMANJA);
+        mavVP.addObject("vrstaPrimanja", vrstaPrimanja);
+
+        return mavVP;
+    }
+
+    /**/
+
+    @RequestMapping(value="/updateVrstaPrimanja", method = RequestMethod.POST)
+    public String updateVP(@ModelAttribute("vrstaPrimanja") VrstaPrimanja vrstaPrimanja) {
+        try {
+            daoVP.updateVP(vrstaPrimanja);
+            return "redirect:/vrstaPrimanja";
+        }catch (DataAccessException da){
+            System.out.println("Greska: " + da.getCause());
+            return "../error/error_uik.html";
+        }
+    }
+
+    @RequestMapping("/deleteVrstaPrimanja/{ID_VRSTA_PRIMANJA}")
+    public String deleteVP(@PathVariable(name = "ID_VRSTA_PRIMANJA") long ID_VRSTA_PRIMANJA) {
+        daoVP.deleteVP(ID_VRSTA_PRIMANJA);
+        return "redirect:/vrstaPrimanja";
+    }
 }

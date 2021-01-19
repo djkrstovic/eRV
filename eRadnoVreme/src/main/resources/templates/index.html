@@ -5,10 +5,38 @@
     <meta charset="UTF-8">
     <title>eRV : Radnici</title>
     <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
 
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
     </style>
 </head>
 <body>
+    <ul>
+        <li><a href="/">Radnici</a></li>
+        <li><a href="/klasifikacija">Klasifikacija</a></li>
+        <li><a href="/vrstaPrimanja">Vrsta primanja</a></li>
+
+    </ul>
 
     <div align="center" id="radnici">
         <h1>RADNICI</h1>
@@ -42,8 +70,8 @@
                 <td th:text="${radnik.ID_RADNO_MESTO}">ID Radno mesto</td>
                 <td>
                     <a th:href="@{'/edit/' + ${radnik.ID_RADNIK}}">Edit</a>
-                    <!--&nbsp;&nbsp;&nbsp;
-                    <a th:href="/@{'/delete/' + ${radnik.id_radnik}}">Delete</a>-->
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${radnik.ID_RADNIK}}">Delete</a>
                 </td>
             </tr>
             </tbody>

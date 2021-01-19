@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>eRV : Nova vrsta primanja</title>
+    <style>
+        table > input {width: 400px;}
+        #dugme{
+            display: block;
+            margin: auto;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="/">Radnici</a></li>
+    <li><a href="/klasifikacija">Klasifikacija</a></li>
+    <li><a href="/vrstaPrimanja">Vrsta primanja</a></li>
+</ul>
+    <div align="center" id="nova_vrsta_primanja">
+        <h1>NOVA VRSTA PRIMANJA</h1>
+        <br/><br/>
+
+        <form action="#" th:action="@{/saveVrstaPrimanja}" th:object="${vrstaPrimanja}" method="post">
+            <table border="1" cellpadding="10">
+                <tr>
+                    <td>ID VRSTA PRIMANJA</td>
+                    <td><input type="number" required min="0" step="1" th:field="*{ID_VRSTA_PRIMANJA}" placeholder="ID VRSTA PRIMANJA"></td>
+                </tr>
+                <tr>
+                    <td>NAZIV</td>
+                    <td><input type="text" required pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{NAZIV}" placeholder="Naziv vrste primanja"></td>
+                </tr>
+                <tr>
+                    <td>CENA RADA</td>
+                    <td><input type="text" required pattern="^([0-9]{3})$" th:field="*{CENA_RADA}" placeholder="Cena rada"></td>
+                </tr>
+                <tr>
+                    <td>ID KLASIFIKACIJA CASOVA</td>
+                    <td><input type="text" required min="0" max="99" th:field="*{ID_KLASIFIKACIJA_CASOVA}" placeholder="ID klasifikacija"></td>
+                </tr>
+                <tr>
+                    <td th:colspan="2"><button id="dugme" align="center" type="submit">Dodaj vrstu primanja</button> </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+
+</body>
+</html>
