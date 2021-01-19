@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>eRV : Koeficijent</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/">Radnici</a></li>
+        <li><a href="/klasifikacija">Klasifikacija</a></li>
+        <li><a href="/vrstaPrimanja">Vrsta primanja</a></li>
+        <li><a href="/koeficijent">Koeficijent</a></li>
+
+    </ul>
+
+    <div align="center" id="koeficijent">
+        <h1>Koeficijent</h1>
+        <br/><br/>
+        <table border="1" cellpadding="10">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Broj</th>
+                <th>Datum od</th>
+                <th>Datum do</th>
+                <th>CRUD</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="koeficijent : ${listKoeficijent}">
+                <td th:text="${koeficijent.ID_KOEFICIJENT}">ID</td>
+                <td th:text="${koeficijent.BROJ}">BROJ</td>
+                <td th:text="${koeficijent.DATUM_OD}">Datum od</td>
+                <td th:text="${koeficijent.DATUM_DO}">Datum do</td>
+
+                <td>
+                    <a th:href="@{'/editKoeficijent/' + ${koeficijent.ID_KOEFICIJENT}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/deleteKoeficijent/' + ${koeficijent.ID_KOEFICIJENT}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/newKoeficijent">Dodaj novi koeficijent</a>
+    </div>
+
+
+</body>
+</html>

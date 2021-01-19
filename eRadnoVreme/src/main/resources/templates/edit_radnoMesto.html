@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>eRV : Izmeni klasifikaciju</title>
+    <title>eRV : Izmeni radno mesto</title>
     <style>
         table > input {width: 400px;}
         #dugme{
@@ -42,18 +42,34 @@
 
 </ul>
     <div align="center" id="novi_radnik">
-        <h1>IZMENI PODATKE O RADNIKU</h1>
+        <h1>IZMENI PODATKE O RADNOM MESTU</h1>
         <br/><br/>
 
-        <form action="#" th:action="@{/updateKlasifikacija}" th:object="${klasifikacija}" method="post">
+        <form action="#" th:action="@{/updateRadnoMesto}" th:object="${radnoMesto}" method="post">
             <table border="1" cellpadding="10">
                 <tr>
                     <td>ID_RADNIK</td>
-                    <td><input type="number" required min="0" step="1" th:field="*{ID_KLASIFIKACIJA_CASOVA}" readonly="readonly" placeholder="ID KLASIFIKACIJE"/></td>
+                    <td><input type="number" required min="0" step="1" th:field="*{ID_RADNO_MESTO}" readonly="readonly" placeholder="ID Radno mesto"/></td>
                 </tr>
                 <tr>
-                    <td>Naziv</td>
-                    <td><input type="text" required pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{NAZIV}" placeholder="NAZIV"/></td>
+                    <td>NAZIV</td>
+                    <td><input type="text" required pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{NAZIV}" placeholder="Naziv radnog mesta"></td>
+                </tr>
+                <tr>
+                    <td>Broj izvrsilaca</td>
+                    <td><input type="number" min="0" step="1" required th:field="*{BR_IZVRSILACA}" placeholder="Broj izvrsilaca"></td>
+                </tr>
+                <tr>
+                    <td>DATUM OD</td>
+                    <td><input type="date" required th:field="*{DATUM_OD}" placeholder="Datum od"></td>
+                </tr>
+                <tr>
+                    <td>DATUM DO</td>
+                    <td><input type="date" th:field="*{DATUM_DO}" placeholder="Datum do"></td>
+                </tr>
+                <tr>
+                    <td>ID Koeficijent</td>
+                    <td><input type="number" required min="0" step="1" th:field="*{ID_KOEFICIJENT}" placeholder="ID Koeficijent"></td>
                 </tr>
                 <tr>
                     <td th:colspan="2"><button id="dugme" align="center" type="submit">Potvrdi izmene</button> </td>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>eRV : Radno mesto</title>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/">Radnici</a></li>
+        <li><a href="/klasifikacija">Klasifikacija</a></li>
+        <li><a href="/vrstaPrimanja">Vrsta primanja</a></li>
+        <li><a href="/koeficijent">Koeficijent</a></li>
+
+    </ul>
+
+    <div align="center" id="koeficijent">
+        <h1>Radno mesto</h1>
+        <br/><br/>
+        <table border="1" cellpadding="10">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Naziv</th>
+                <th>Broj izvrsilaca</th>
+                <th>Datum od</th>
+                <th>Datum do</th>
+                <th>ID koeficijent</th>
+                <th>CRUD</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="radnoMesto : ${listRadnoMesto}">
+                <td th:text="${radnoMesto.ID_RADNO_MESTO}">ID</td>
+                <td th:text="${radnoMesto.NAZIV}">Naziv</td>
+                <td th:text="${radnoMesto.BR_IZVRSILACA}">Broj izvrsilaca</td>
+                <td th:text="${radnoMesto.DATUM_OD}">Datum od</td>
+                <td th:text="${radnoMesto.DATUM_DO}">Datum do</td>
+                <td th:text="${radnoMesto.ID_KOEFICIJENT}">ID koeficijent</td>
+
+                <td>
+                    <a th:href="@{'/editRadnoMesto/' + ${radnoMesto.ID_RADNO_MESTO}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/deleteRadnoMesto/' + ${radnoMesto.ID_RADNO_MESTO}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/newRadnoMesto">Dodaj novo radno mesto</a>
+    </div>
+
+
+</body>
+</html>

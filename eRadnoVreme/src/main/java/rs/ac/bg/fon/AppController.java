@@ -51,7 +51,6 @@ public class AppController {
         return mav;
     }
 
-    /**/
 
     @RequestMapping(value="/update", method = RequestMethod.POST)
     public String update(@ModelAttribute("radnik") Radnik radnik) {
@@ -115,7 +114,6 @@ public class AppController {
         return mavK;
     }
 
-    /**/
 
     @RequestMapping(value="/updateKlasifikacija", method = RequestMethod.POST)
     public String updateK(@ModelAttribute("klasifikacija") Klasifikacija klasifikacija) {
@@ -167,7 +165,6 @@ public class AppController {
         return mavVP;
     }
 
-    /**/
 
     @RequestMapping(value="/updateVrstaPrimanja", method = RequestMethod.POST)
     public String updateVP(@ModelAttribute("vrstaPrimanja") VrstaPrimanja vrstaPrimanja) {
@@ -185,4 +182,113 @@ public class AppController {
         daoVP.deleteVP(ID_VRSTA_PRIMANJA);
         return "redirect:/vrstaPrimanja";
     }
+ // KOEFICIJENT
+
+    @Autowired
+    private KoeficijentDao daoKo;
+
+    @RequestMapping("/koeficijent")
+    public String viewHomePageKoeficijent(Model modelKo){
+
+        List<Koeficijent> listKoeficijent = daoKo.list();
+        modelKo.addAttribute("listKoeficijent", listKoeficijent);
+
+        return "/koeficijent";
+
+    }
+
+    @RequestMapping("/newKoeficijent")
+    public String showNewFormKo(Model modelKo){
+        Koeficijent koeficijent = new Koeficijent();
+        modelKo.addAttribute("koeficijent", koeficijent);
+        return "new_koeficijent";
+
+    }
+
+    @RequestMapping(value="/saveKoeficijent", method = RequestMethod.POST)
+    public String saveKo(@ModelAttribute("koeficijent") Koeficijent koeficijent){
+        daoKo.saveKo(koeficijent);
+
+        return "redirect:/koeficijent";
+    }
+
+    @RequestMapping("/editKoeficijent/{ID_KOEFICIJENT}")
+    public ModelAndView showEditFormKo(@PathVariable(name = "ID_KOEFICIJENT") long ID_KOEFICIJENT){
+        ModelAndView mavKo = new ModelAndView("edit_koeficijent");
+        Koeficijent koeficijent = daoKo.getKo(ID_KOEFICIJENT);
+        mavKo.addObject("koeficijent", koeficijent);
+
+        return mavKo;
+    }
+
+
+    @RequestMapping(value="/updateKoeficijent", method = RequestMethod.POST)
+    public String updateKo(@ModelAttribute("koeficijent") Koeficijent koeficijent) {
+        daoKo.updateKo(koeficijent);
+        return "redirect:/koeficijent";
+    }
+
+    @RequestMapping("/deleteKoeficijent/{ID_KOEFICIJENT}")
+    public String deleteKo(@PathVariable(name = "ID_KOEFICIJENT") long ID_KOEFICIJENT) {
+        daoKo.deleteKo(ID_KOEFICIJENT);
+        return "redirect:/koeficijent";
+    }
+
+//Radno mesto
+
+    @Autowired
+    private RadnoMestoDao daoRM;
+
+    @RequestMapping("/radnoMesto")
+    public String viewHomePageRadnoMesto(Model modelRM){
+
+        List<RadnoMesto> listRadnoMesto = daoRM.list();
+        modelRM.addAttribute("listRadnoMesto", listRadnoMesto);
+
+        return "/radnoMesto";
+
+    }
+
+    @RequestMapping("/newRadnoMesto")
+    public String showNewFormRM(Model modelRM){
+        RadnoMesto radnoMesto = new RadnoMesto();
+        modelRM.addAttribute("radnoMesto", radnoMesto);
+        return "new_radnoMesto";
+
+    }
+
+    @RequestMapping(value="/saveRadnoMesto", method = RequestMethod.POST)
+    public String saveRM(@ModelAttribute("radnoMesto") RadnoMesto radnoMesto){
+        daoRM.saveRM(radnoMesto);
+
+        return "redirect:/radnoMesto";
+    }
+
+    @RequestMapping("/editRadnoMesto/{ID_RADNO_MESTO}")
+    public ModelAndView showEditFormRM(@PathVariable(name = "ID_RADNO_MESTO") long ID_RADNO_MESTO){
+        ModelAndView mavRM = new ModelAndView("edit_radnoMesto");
+        RadnoMesto radnoMesto = daoRM.getRM(ID_RADNO_MESTO);
+        mavRM.addObject("radnoMesto", radnoMesto);
+
+        return mavRM;
+    }
+
+
+    @RequestMapping(value="/updateRadnoMesto", method = RequestMethod.POST)
+    public String updateRM(@ModelAttribute("radnoMesto") RadnoMesto radnoMesto) {
+        daoRM.updateRM(radnoMesto);
+        return "redirect:/radnoMesto";
+    }
+
+    @RequestMapping("/deleteRadnoMesto/{ID_RADNO_MESTO}")
+    public String deleteRM(@PathVariable(name = "ID_RADNO_MESTO") long ID_RADNO_MESTO) {
+        try {
+            daoRM.deleteRM(ID_RADNO_MESTO);
+            return "redirect:/radnoMesto";
+        }catch (DataAccessException da){
+            System.out.println("Greska: " + da.getCause());
+            return "../error/error_delRM.html";
+        }
+    }
+
 }

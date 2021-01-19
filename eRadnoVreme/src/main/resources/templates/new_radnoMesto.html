@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>eRV : Novo radno mesto</title>
+    <style>
+        table > input {width: 400px;}
+        #dugme{
+            display: block;
+            margin: auto;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="/">Radnici</a></li>
+    <li><a href="/klasifikacija">Klasifikacija</a></li>
+    <li><a href="/vrstaPrimanja">Vrsta primanja</a></li>
+
+</ul>
+    <div align="center" id="novo_radnoMesto">
+        <h1>NOVO RADNO MESTO</h1>
+        <br/><br/>
+
+        <form action="#" th:action="@{/saveRadnoMesto}" th:object="${radnoMesto}" method="post">
+            <table border="1" cellpadding="10">
+                <tr>
+                    <td>ID Radno mesto</td>
+                    <td><input type="number" required min="0" step="1" th:field="*{ID_RADNO_MESTO}" placeholder="ID radnog mesto"></td>
+                </tr>
+                <tr>
+                    <td>Naziv</td>
+                    <td><input type="text" required pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{NAZIV}" placeholder="Naziv"></td>
+                </tr>
+                <tr>
+                    <td>Broj izvrsilaca</td>
+                    <td><input type="number" required min="0" max="99" th:field="*{BR_IZVRSILACA}" placeholder="Broj izvrsilaca"></td>
+                </tr>
+                <tr>
+                    <td>Datum od</td>
+                    <td><input type="date" required th:field="*{DATUM_OD}" placeholder="Datum od"></td>
+                </tr>
+                <tr>
+                    <td>Datum do</td>
+                    <td><input type="date" th:field="*{DATUM_DO}" placeholder="Datum do"></td>
+                </tr>
+
+                <tr>
+                    <td>ID koeficijenta</td>
+                    <td><input type="number" required min="0" max="99" th:field="*{ID_KOEFICIJENT}"></td>
+                </tr>
+                <tr>
+                    <td th:colspan="2"><button id="dugme" align="center" type="submit">Dodaj radno mesto</button> </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+
+
+</body>
+</html>
