@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <title>eRV : Nova mesecna evidencija</title>
     <style>
-        table > input {width: 400px;}
+        body{ background: #333; color: #ffffff;}
+        .input {width: 100%; background: #404040; color: white; font-size: 25px;}
         .button {
             position: relative;
             background-color: #4CAF50;
@@ -28,8 +29,6 @@
             background: #f1f1f1;
             display: block;
             position: absolute;
-            padding-top: 300%;
-            padding-left: 350%;
             margin-left: -20px !important;
             margin-top: -120%;
             opacity: 0;
@@ -48,7 +47,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: #ef5314;
         }
 
         li {
@@ -69,7 +68,7 @@
 
         table.fix {
             table-layout: fixed;
-            width: 80%;
+            width: 40%;
         }
     </style>
 </head>
@@ -85,27 +84,27 @@
 
 </ul>
     <div align="center" id="nova_mesecnaEvidencija">
-        <h1>NOVO MESECNA EVIDENCIJA</h1>
+        <h1>NOVA MESECNA EVIDENCIJA</h1>
         <br/><br/>
 
         <form action="#" th:action="@{/saveMesecnaEvidencija}" th:object="${mesecnaEvidencija}" method="post">
             <table border="1" cellpadding="10" class="fix">
                 <tr>
                     <td>ID Mesecne evidencije</td>
-                    <td><input type="number" required min="0" step="1" th:field="*{ID_MESECNA_EVIDENCIJA}" placeholder="ID MESECNA EVIDENCIJA"/></td>
+                    <td><input class="input" type="number" required min="0" step="1" th:field="*{ID_MESECNA_EVIDENCIJA}" placeholder="ID MESECNA EVIDENCIJA"/></td>
                 </tr>
                 <tr>
                     <td>Mesec</td>
-                    <td><input type="text" required th:field="*{MESEC}" placeholder="Naziv meseca"></td>
+                    <td><input class="input" type="text" required th:field="*{MESEC}" placeholder="Naziv meseca"></td>
                 </tr>
                 <tr>
                     <td>ID Radnik</td>
-                    <td><input type="number" required min="0" step="1" th:field="*{ID_RADNIK}" placeholder="ID radnika"/></td>
+                    <td><input class="input" type="number" required min="0" step="1" th:field="*{ID_RADNIK}" placeholder="ID radnika"/></td>
                 </tr>
 
                 <tr hidden>
                     <td>Procenjena zarada</td>
-                    <td><input type="number" value="0" th:field="*{PROCENJENA_ZARADA}" placeholder="Procenjena vrednost"></td>
+                    <td><input class="input" type="number" value="0" th:field="*{PROCENJENA_ZARADA}" placeholder="Procenjena vrednost"></td>
                 </tr>
                 <tr>
                     <td th:colspan="2"><button class="button" align="center" type="submit">Dodaj mesecnu evidenciju</button> </td>

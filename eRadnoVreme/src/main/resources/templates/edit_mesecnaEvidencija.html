@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <title>eRV : Izmeni mesecnu evidenciju</title>
     <style>
-        table > input {width: 400px;}
+        body{ background: #333; color: #ffffff;}
+        .input {width: 100%; background: #404040; color: white; font-size: 25px;}
         .button {
             position: relative;
-            background-color: #4CAF50;
+            background-color: #0054ff;
             border: none;
             font-size: 28px;
             color: #FFFFFF;
@@ -28,8 +29,6 @@
             background: #f1f1f1;
             display: block;
             position: absolute;
-            padding-top: 300%;
-            padding-left: 350%;
             margin-left: -20px !important;
             margin-top: -120%;
             opacity: 0;
@@ -47,7 +46,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: #ef5314;
         }
 
         li {
@@ -68,7 +67,7 @@
 
         table.fix {
             table-layout: fixed;
-            width: 80%;
+            width: 40%;
         }
     </style>
 </head>
@@ -91,19 +90,19 @@
             <table border="1" cellpadding="10" class="fix">
                 <tr>
                     <td>ID Mesecne evidencije</td>
-                    <td><input type="number" required min="0" step="1" th:field="*{ID_MESECNA_EVIDENCIJA}" readonly="readonly" placeholder="ID MESECNA EVIDENCIJA"/></td>
+                    <td><input class="input" type="number" required min="0" step="1" th:field="*{ID_MESECNA_EVIDENCIJA}" readonly="readonly" placeholder="ID MESECNA EVIDENCIJA"/></td>
                 </tr>
                 <tr>
                     <td>Mesec</td>
-                    <td><input type="text" required th:field="*{MESEC}" placeholder="Naziv meseca"></td>
+                    <td><input class="input" type="text" required th:field="*{MESEC}" placeholder="Naziv meseca"></td>
                 </tr>
                 <tr>
                     <td>Prezime i ime</td>
-                    <td><input type="text" pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{PREZIME_IME}" placeholder="Prezime i ime radnika"/></td>
+                    <td><input class="input" type="text" pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{PREZIME_IME}" placeholder="Prezime i ime radnika"/></td>
                 </tr>
                 <tr>
                     <td>ID Radnik</td>
-                    <td><input type="number" required min="0" step="1" th:field="*{ID_RADNIK}" placeholder="ID radnika"/></td>
+                    <td><input class="input" type="number" required min="0" step="1" th:field="*{ID_RADNIK}" placeholder="ID radnika"/></td>
                 </tr>
 
                 <tr>

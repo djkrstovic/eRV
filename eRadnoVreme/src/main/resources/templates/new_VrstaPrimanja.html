@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <title>eRV : Nova vrsta primanja</title>
     <style>
-        table > input {width: 400px;}
+        body{ background: #333; color: #ffffff;}
+        .input {width: 100%; background: #404040; color: white; font-size: 25px;}
         .button {
             position: relative;
             background-color: #4CAF50;
@@ -28,8 +29,6 @@
             background: #f1f1f1;
             display: block;
             position: absolute;
-            padding-top: 300%;
-            padding-left: 350%;
             margin-left: -20px !important;
             margin-top: -120%;
             opacity: 0;
@@ -48,7 +47,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: #ef5314;
         }
 
         li {
@@ -69,7 +68,7 @@
 
         table.fix {
             table-layout: fixed;
-            width: 80%;
+            width: 40%;
         }
     </style>
 </head>
@@ -91,19 +90,19 @@
             <table border="1" cellpadding="10" class="fix">
                 <tr>
                     <td>ID VRSTA PRIMANJA</td>
-                    <td><input type="number" required min="0" step="1" th:field="*{ID_VRSTA_PRIMANJA}" placeholder="ID VRSTA PRIMANJA"></td>
+                    <td><input class="input" type="number" required min="0" step="1" th:field="*{ID_VRSTA_PRIMANJA}" placeholder="ID VRSTA PRIMANJA"></td>
                 </tr>
                 <tr>
                     <td>NAZIV</td>
-                    <td><input type="text" required pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{NAZIV}" placeholder="Naziv vrste primanja"></td>
+                    <td><input class="input" type="text" required pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{NAZIV}" placeholder="Naziv vrste primanja"></td>
                 </tr>
                 <tr>
                     <td>CENA RADA</td>
-                    <td><input type="text" required pattern="^([0-9]{3})$" th:field="*{CENA_RADA}" placeholder="Cena rada"></td>
+                    <td><input class="input" type="text" required pattern="^([0-9]{3})$" th:field="*{CENA_RADA}" placeholder="Cena rada"></td>
                 </tr>
                 <tr>
                     <td>ID KLASIFIKACIJA CASOVA</td>
-                    <td><input type="text" required min="0" max="99" th:field="*{ID_KLASIFIKACIJA_CASOVA}" placeholder="ID klasifikacija"></td>
+                    <td><input class="input" type="text" required min="0" max="99" th:field="*{ID_KLASIFIKACIJA_CASOVA}" placeholder="ID klasifikacija"></td>
                 </tr>
                 <tr>
                     <td th:colspan="2"><button class="button" align="center" type="submit">Dodaj vrstu primanja</button> </td>

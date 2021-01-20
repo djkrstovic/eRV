@@ -5,12 +5,118 @@
     <meta charset="UTF-8">
     <title>eRV : Radnici</title>
     <style>
+        body{ background: #333; color: #ffffff; }
+        .button {
+             position: relative;
+             background-color: #4CAF50;
+             border: none;
+             font-size: 20px;
+             color: #FFFFFF;
+             padding: 10px;
+             width: 70%;
+             text-align: center;
+             transition-duration: 0.4s;
+             text-decoration: none;
+             overflow: hidden;
+             cursor: cell;
+             display: block;
+             margin: auto;
+         }
+
+    .button:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .button:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
+    .button1 {
+        position: relative;
+        background-color: #0054ff;
+        border: none;
+        font-size: 20px;
+        color: #FFFFFF;
+        padding: 10px;
+        width: 30%;
+        text-align: center;
+        transition-duration: 0.4s;
+        text-decoration: none;
+        overflow: hidden;
+        cursor: pointer;
+        display: inline-block;
+        margin: auto;
+    }
+
+    .button1:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .button1:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
+    .button2 {
+        position: relative;
+        background-color: #ff0000;
+        border: none;
+        font-size: 20px;
+        color: #FFFFFF;
+        padding: 10px;
+        width: 35%;
+        text-align: center;
+        transition-duration: 0.4s;
+        text-decoration: none;
+        overflow: hidden;
+        cursor: pointer;
+        display: inline-block;
+        margin: auto;
+    }
+
+    .button2:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .button2:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
         ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: #ef5314;
         }
 
         li {
@@ -32,7 +138,7 @@
 
         table.fix {
             table-layout: fixed;
-            width: 80%;
+            width: 90%;
         }
     </style>
 </head>
@@ -48,7 +154,8 @@
 
     </ul>
 
-    <div align="center" id="radnici">
+    <div align="center" class="radnici">
+
         <h1>RADNICI</h1>
         <br/><br/>
         <table border="1" cellpadding="10" class="fix">
@@ -63,7 +170,7 @@
                 <th>Identifikator casova rada</th>
                 <th>Id koeficijent</th>
                 <th>Id radnog mesta</th>
-                <th>CRUD</th>
+                <th>CRUD <br/><a href="/new" class="button">Dodaj</a></th>
 
             </tr>
             </thead>
@@ -79,14 +186,15 @@
                 <td th:text="${radnik.ID_KOEFICIJENT}">ID Koeficijent</td>
                 <td th:text="${radnik.ID_RADNO_MESTO}">ID Radno mesto</td>
                 <td>
-                    <a th:href="@{'/edit/' + ${radnik.ID_RADNIK}}">Edit</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${radnik.ID_RADNIK}}">Delete</a>
+                    <a class="button1" th:href="@{'/edit/' + ${radnik.ID_RADNIK}}">Edit</a> <a class="button2" th:href="@{'/delete/' + ${radnik.ID_RADNIK}}">Delete</a>
+
+
+
                 </td>
             </tr>
             </tbody>
         </table>
-        <a href="/new">Dodaj novog radnika</a>
+
     </div>
 
 

@@ -5,12 +5,117 @@
     <meta charset="UTF-8">
     <title>eRV : Klasifikacije</title>
     <style>
+        body{ background: #333; color: #ffffff; }
+        .button {
+            position: relative;
+            background-color: #4CAF50;
+            border: none;
+            font-size: 20px;
+            color: #FFFFFF;
+            padding: 10px;
+            width: 70%;
+            text-align: center;
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: cell;
+            display: block;
+            margin: auto;
+        }
+
+        .button:after {
+            content: "";
+            background: #f1f1f1;
+            display: block;
+            position: absolute;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        .button:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
+
+        .button1 {
+            position: relative;
+            background-color: #0054ff;
+            border: none;
+            font-size: 20px;
+            color: #FFFFFF;
+            padding: 10px;
+            width: 40%;
+            text-align: center;
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+            display: inline-block;
+            margin: auto;
+        }
+
+        .button1:after {
+            content: "";
+            background: #f1f1f1;
+            display: block;
+            position: absolute;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        .button1:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
+
+        .button2 {
+            position: relative;
+            background-color: #ff0000;
+            border: none;
+            font-size: 20px;
+            color: #FFFFFF;
+            padding: 10px;
+            width: 40%;
+            text-align: center;
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+            display: inline-block;
+            margin: auto;
+        }
+
+        .button2:after {
+            content: "";
+            background: #f1f1f1;
+            display: block;
+            position: absolute;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        .button2:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
         ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: #ef5314;
         }
 
         li {
@@ -31,7 +136,7 @@
 
         table.fix {
             table-layout: fixed;
-            width: 80%;
+            width: 90%;
         }
     </style>
 </head>
@@ -48,14 +153,15 @@
     </ul>
 
     <div align="center" id="klasifikacija">
-        <h1>Klasifikacije</h1>
+        <h1>KLASIFIKACIJE</h1>
         <br/><br/>
         <table border="1" cellpadding="10" class="fix">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>Naziv</th>
-                <th>CRUD</th>
+                <th>CRUD<br/>
+                    <a class="button" href="/newKlasifikacija">Dodaj</a></th>
 
             </tr>
             </thead>
@@ -64,14 +170,12 @@
                 <td th:text="${klasfikacija.ID_KLASIFIKACIJA_CASOVA}">ID</td>
                 <td th:text="${klasfikacija.NAZIV}">JMBG</td>
                 <td>
-                    <a th:href="@{'/editKlasfikacija/' + ${klasfikacija.ID_KLASIFIKACIJA_CASOVA}}">Edit</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/deleteKlasfikacija/' + ${klasfikacija.ID_KLASIFIKACIJA_CASOVA}}">Delete</a>
+                    <a class="button1" th:href="@{'/editKlasfikacija/' + ${klasfikacija.ID_KLASIFIKACIJA_CASOVA}}">Edit</a> <a class="button2" th:href="@{'/deleteKlasfikacija/' + ${klasfikacija.ID_KLASIFIKACIJA_CASOVA}}">Delete</a>
                 </td>
             </tr>
             </tbody>
         </table>
-        <a href="/newKlasifikacija">Dodaj novu klasifikaciju</a>
+
     </div>
 
 

@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <title>eRV : Izmeni koeficijent</title>
     <style>
-        table > input {width: 400px;}
+        body{ background: #333; color: #ffffff;}
+        .input {width: 100%; background: #404040; color: white; font-size: 25px;}
         .button {
             position: relative;
-            background-color: #4CAF50;
+            background-color: #0054ff;
             border: none;
             font-size: 28px;
             color: #FFFFFF;
@@ -28,8 +29,6 @@
             background: #f1f1f1;
             display: block;
             position: absolute;
-            padding-top: 300%;
-            padding-left: 350%;
             margin-left: -20px !important;
             margin-top: -120%;
             opacity: 0;
@@ -49,7 +48,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: #ef5314;
         }
 
         li {
@@ -70,7 +69,7 @@
 
         table.fix {
             table-layout: fixed;
-            width: 80%;
+            width: 40%;
         }
     </style>
 </head>
@@ -93,19 +92,19 @@
             <table border="1" cellpadding="10" class="fix">
                 <tr>
                     <td>ID_RADNIK</td>
-                    <td><input type="number" required min="0" step="1" th:field="*{ID_KOEFICIJENT}" readonly="readonly" placeholder="ID KOEFICIJENT"/></td>
+                    <td><input class="input" type="number" required min="0" step="1" th:field="*{ID_KOEFICIJENT}" readonly="readonly" placeholder="ID KOEFICIJENT"/></td>
                 </tr>
                 <tr>
                     <td>BROJ</td>
-                    <td><input type="number" required min="0.1" max="99.99" step="0.01" th:field="*{BROJ}" placeholder="Vrednost koeficijenta"></td>
+                    <td><input class="input" type="number" required min="0.1" max="99.99" step="0.01" th:field="*{BROJ}" placeholder="Vrednost koeficijenta"></td>
                 </tr>
                 <tr>
                     <td>DATUM OD</td>
-                    <td><input type="date" required th:field="*{DATUM_OD}" placeholder="Datum od"></td>
+                    <td><input class="input" type="date" required th:field="*{DATUM_OD}" placeholder="Datum od"></td>
                 </tr>
                 <tr>
                     <td>DATUM DO</td>
-                    <td><input type="date" th:field="*{DATUM_DO}" placeholder="Datum do"></td>
+                    <td><input class="input" type="date" th:field="*{DATUM_DO}" placeholder="Datum do"></td>
                 </tr>
                 <tr>
                     <td th:colspan="2"><button class="button" align="center" type="submit">Potvrdi izmene</button> </td>

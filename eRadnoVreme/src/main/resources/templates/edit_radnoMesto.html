@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <title>eRV : Izmeni radno mesto</title>
     <style>
-        table > input {width: 400px;}
+        body{ background: #333; color: #ffffff;}
+        .input {width: 100%; background: #404040; color: white; font-size: 25px;}
         .button {
             position: relative;
-            background-color: #4CAF50;
+            background-color: #0054ff;
             border: none;
             font-size: 28px;
             color: #FFFFFF;
@@ -28,8 +29,6 @@
             background: #f1f1f1;
             display: block;
             position: absolute;
-            padding-top: 300%;
-            padding-left: 350%;
             margin-left: -20px !important;
             margin-top: -120%;
             opacity: 0;
@@ -47,7 +46,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: #ef5314;
         }
 
         li {
@@ -68,7 +67,7 @@
 
         table.fix {
             table-layout: fixed;
-            width: 80%;
+            width: 40%;
         }
     </style>
 </head>
@@ -91,27 +90,27 @@
             <table border="1" cellpadding="10" class="fix">
                 <tr>
                     <td>ID Radno mesto</td>
-                    <td><input type="number" required min="0" step="1" th:field="*{ID_RADNO_MESTO}" readonly="readonly" placeholder="ID Radno mesto"/></td>
+                    <td><input class="input" type="number" required min="0" step="1" th:field="*{ID_RADNO_MESTO}" readonly="readonly" placeholder="ID Radno mesto"/></td>
                 </tr>
                 <tr>
                     <td>NAZIV</td>
-                    <td><input type="text" required pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{NAZIV}" placeholder="Naziv radnog mesta"></td>
+                    <td><input class="input" type="text" required pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{NAZIV}" placeholder="Naziv radnog mesta"></td>
                 </tr>
                 <tr>
                     <td>Broj izvrsilaca</td>
-                    <td><input type="number" min="0" step="1" required th:field="*{BR_IZVRSILACA}" placeholder="Broj izvrsilaca"></td>
+                    <td><input class="input" type="number" min="0" step="1" required th:field="*{BR_IZVRSILACA}" placeholder="Broj izvrsilaca"></td>
                 </tr>
                 <tr>
                     <td>DATUM OD</td>
-                    <td><input type="date" required th:field="*{DATUM_OD}" placeholder="Datum od"></td>
+                    <td><input class="input" type="date" required th:field="*{DATUM_OD}" placeholder="Datum od"></td>
                 </tr>
                 <tr>
                     <td>DATUM DO</td>
-                    <td><input type="date" th:field="*{DATUM_DO}" placeholder="Datum do"></td>
+                    <td><input class="input" type="date" th:field="*{DATUM_DO}" placeholder="Datum do"></td>
                 </tr>
                 <tr>
                     <td>ID Koeficijent</td>
-                    <td><input type="number" required min="0" step="1" th:field="*{ID_KOEFICIJENT}" placeholder="ID Koeficijent"></td>
+                    <td><input class="input" type="number" required min="0" step="1" th:field="*{ID_KOEFICIJENT}" placeholder="ID Koeficijent"></td>
                 </tr>
                 <tr>
                     <td th:colspan="2"><button class="button" align="center" type="submit">Potvrdi izmene</button> </td>

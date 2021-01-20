@@ -5,12 +5,117 @@
     <meta charset="UTF-8">
     <title>eRV : Mesecna evidencija</title>
     <style>
+        body{ background: #333; color: #ffffff; }
+        .button {
+            position: relative;
+            background-color: #4CAF50;
+            border: none;
+            font-size: 20px;
+            color: #FFFFFF;
+            padding: 10px;
+            width: 70%;
+            text-align: center;
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: cell;
+            display: block;
+            margin: auto;
+        }
+
+        .button:after {
+            content: "";
+            background: #f1f1f1;
+            display: block;
+            position: absolute;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        .button:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
+
+        .button1 {
+            position: relative;
+            background-color: #0054ff;
+            border: none;
+            font-size: 20px;
+            color: #FFFFFF;
+            padding: 10px;
+            width: 40%;
+            text-align: center;
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+            display: inline-block;
+            margin: auto;
+        }
+
+        .button1:after {
+            content: "";
+            background: #f1f1f1;
+            display: block;
+            position: absolute;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        .button1:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
+
+        .button2 {
+            position: relative;
+            background-color: #ff0000;
+            border: none;
+            font-size: 20px;
+            color: #FFFFFF;
+            padding: 10px;
+            width: 40%;
+            text-align: center;
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+            display: inline-block;
+            margin: auto;
+        }
+
+        .button2:after {
+            content: "";
+            background: #f1f1f1;
+            display: block;
+            position: absolute;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        .button2:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
         ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: #ef5314;
         }
 
         li {
@@ -31,7 +136,7 @@
 
         table.fix {
             table-layout: fixed;
-            width: 80%;
+            width: 90%;
         }
     </style>
 </head>
@@ -48,7 +153,7 @@
     </ul>
 
     <div align="center" id="koeficijent">
-        <h1>Radno mesto</h1>
+        <h1>MESECNA EVIDENCIJA</h1>
         <br/><br/>
         <table border="1" cellpadding="10" class="fix">
             <thead>
@@ -58,7 +163,8 @@
                 <th>Prezime i ime</th>
                 <th>ID Radnika</th>
                 <th>Procenjena zarada</th>
-                <th>CRUD</th>
+                <th>CRUD<br/>
+                    <a class="button" href="/newMesecnaEvidencija">Dodaj</a></th>
 
             </tr>
             </thead>
@@ -71,14 +177,12 @@
                 <td th:text="${mesecnaEvidencija.PROCENJENA_ZARADA}">Procenjena zarada</td>
 
                 <td>
-                    <a th:href="@{'/editMesecnaEvidencija/' + ${mesecnaEvidencija.ID_MESECNA_EVIDENCIJA}}">Edit</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/deleteMesecnaEvidencija/' + ${mesecnaEvidencija.ID_MESECNA_EVIDENCIJA}}">Delete</a>
+                    <a class="button1" th:href="@{'/editMesecnaEvidencija/' + ${mesecnaEvidencija.ID_MESECNA_EVIDENCIJA}}">Edit</a> <a class="button2" th:href="@{'/deleteMesecnaEvidencija/' + ${mesecnaEvidencija.ID_MESECNA_EVIDENCIJA}}">Delete</a>
                 </td>
             </tr>
             </tbody>
         </table>
-        <a href="/newMesecnaEvidencija">Dodaj novu mesecnu evidenciju</a>
+
     </div>
 
 
