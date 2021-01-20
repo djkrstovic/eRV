@@ -8,6 +8,7 @@ Sistem za evidenciju radnog vremena preduzeća **„Infrastruktura železnice Sr
     - :heavy_check_mark: Denormalizacija
     - :heavy_check_mark: KDT i trigeri
     - :heavy_check_mark: Optimizacija
-    - :hourglass_flowing_sand: TODO: **Java** application + **Oracle** database
+    - :heavy_check_mark: **Java** application + **Oracle** database
 - Tools:
     - :pushpin: SQL Developer
+    - :pushpin: IntelliJ IDEA
