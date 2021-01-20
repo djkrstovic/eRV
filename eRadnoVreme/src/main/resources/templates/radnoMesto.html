@@ -28,21 +28,29 @@
         li a:hover {
             background-color: #111;
         }
+
+        table.fix {
+            table-layout: fixed;
+            width: 80%;
+        }
     </style>
 </head>
 <body>
     <ul>
         <li><a href="/">Radnici</a></li>
-        <li><a href="/klasifikacija">Klasifikacija</a></li>
-        <li><a href="/vrstaPrimanja">Vrsta primanja</a></li>
+        <li><a href="/radnoMesto">Radna mesta</a></li>
         <li><a href="/koeficijent">Koeficijent</a></li>
+        <li><a href="/vrstaPrimanja">Vrsta Primanja</a></li>
+        <li><a href="/klasifikacija">Klasifikacija</a></li>
+        <li><a href="/mesecnaEvidencija">Mesecna evidencija</a></li>
+        <li><a href="/ostvareniCasovi">Ostvareni casovi</a></li>
 
     </ul>
 
     <div align="center" id="koeficijent">
         <h1>Radno mesto</h1>
         <br/><br/>
-        <table border="1" cellpadding="10">
+        <table border="1" cellpadding="10" class="fix">
             <thead>
             <tr>
                 <th>ID</th>

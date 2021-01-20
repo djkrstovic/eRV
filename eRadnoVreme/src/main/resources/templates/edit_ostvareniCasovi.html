@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>eRV : Izmeni mesecnu evidenciju</title>
+    <title>eRV : Izmeni ostvarene casove</title>
     <style>
         table > input {width: 400px;}
         #dugme{
@@ -51,29 +51,42 @@
     <li><a href="/ostvareniCasovi">Ostvareni casovi</a></li>
 
 </ul>
-    <div align="center" id="edit_mesecnaEvidencija">
-        <h1>IZMENI PODATKE O MESECNOJ EVIDENCIJI</h1>
+    <div align="center" id="edit_ostvareniCasovi">
+        <h1>IZMENI PODATKE O OSTVARENIM CASOVIMA</h1>
         <br/><br/>
 
-        <form action="#" th:action="@{/updateMesecnaEvidencija}" th:object="${mesecnaEvidencija}" method="post">
+        <form action="#" th:action="@{/updateOstvareniCasovi}" th:object="${ostvareniCasovi}" method="post">
             <table border="1" cellpadding="10" class="fix">
+
+                <tr>
+                    <td>ID Ostvareni casovi</td>
+                    <td><input type="number" readonly="readonly" required min="0" step="1" th:field="*{ID_OSTVARENI_CASOVI}" placeholder="ID Ostvareni casovi"/></td>
+                </tr>
+                <tr>
+                    <td>Dan u mesecu</td>
+                    <td><input type="number" required min="0" max="31" step="1" th:field="*{DAN_U_MESECU}" placeholder="Dan u mesecu"></td>
+                </tr>
+
+                <tr>
+                    <td>Broj sati za dan</td>
+                    <td><input type="number" required min="0" max="24" step="1" th:field="*{BROJ_SATI_ZA_DAN}" placeholder="Broj sati za dan"></td>
+                </tr>
                 <tr>
                     <td>ID Mesecne evidencije</td>
-                    <td><input type="number" required min="0" step="1" th:field="*{ID_MESECNA_EVIDENCIJA}" readonly="readonly" placeholder="ID MESECNA EVIDENCIJA"/></td>
+                    <td><input type="number" required min="0" step="1" th:field="*{ID_MESECNA_EVIDENCIJA}" placeholder="ID MESECNA EVIDENCIJA"/></td>
                 </tr>
                 <tr>
                     <td>Mesec</td>
                     <td><input type="text" required th:field="*{MESEC}" placeholder="Naziv meseca"></td>
                 </tr>
                 <tr>
-                    <td>Prezime i ime</td>
-                    <td><input type="text" pattern="^([A-Za-z]{0,50}[ ]?)+$" th:field="*{PREZIME_IME}" placeholder="Prezime i ime radnika"/></td>
+                    <td>ID Vrsta primanja</td>
+                    <td><input type="number" required min="0" step="1" th:field="*{ID_VRSTA_PRIMANJA}" placeholder="ID Vrsta primanja"/></td>
                 </tr>
                 <tr>
-                    <td>ID Radnik</td>
-                    <td><input type="number" required min="0" step="1" th:field="*{ID_RADNIK}" placeholder="ID radnika"/></td>
+                    <td>Naziv</td>
+                    <td><input type="text" required th:field="*{NAZIV}" placeholder="Naziv vrste primanja"></td>
                 </tr>
-
                 <tr>
                     <td th:colspan="2"><button id="dugme" align="center" type="submit">Potvrdi izmene</button> </td>
                 </tr>

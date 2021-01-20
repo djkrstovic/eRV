@@ -336,10 +336,10 @@ public class AppController {
         return "redirect:/mesecnaEvidencija";
     }
 
-    @RequestMapping("/deleteMesecnaEvidencija/{ID_RADNO_MESTO}")
-    public String deleteME(@PathVariable(name = "ID_RADNO_MESTO") long ID_RADNO_MESTO) {
+    @RequestMapping("/deleteMesecnaEvidencija/{ID_MESECNA_EVIDENCIJA}")
+    public String deleteME(@PathVariable(name = "ID_MESECNA_EVIDENCIJA") long ID_MESECNA_EVIDENCIJA) {
         try {
-            daoME.deleteME(ID_RADNO_MESTO);
+            daoME.deleteME(ID_MESECNA_EVIDENCIJA);
             return "redirect:/mesecnaEvidencija";
         }catch (DataAccessException da){
             System.out.println("Greska: " + da.getCause());
@@ -348,6 +348,69 @@ public class AppController {
     }
 
     // OSTVARENI CASOVI
+    @Autowired
+    private OstvareniCasoviDao daoOC;
 
+    @RequestMapping("/ostvareniCasovi")
+    public String viewHomePageOstvareniCasovi(Model modelOC){
+
+        List<OstvareniCasovi> listOstvareniCasovi = daoOC.list();
+        modelOC.addAttribute("listOstvareniCasovi", listOstvareniCasovi);
+
+        return "/ostvareniCasovi";
+
+    }
+
+    @RequestMapping("/newOstvareniCasovi")
+    public String showNewFormOC(Model modelOC){
+        OstvareniCasovi ostvareniCasovi = new OstvareniCasovi();
+        modelOC.addAttribute("ostvareniCasovi", ostvareniCasovi);
+        return "new_ostvareniCasovi";
+
+    }
+
+    @RequestMapping(value="/saveOstvareniCasovi", method = RequestMethod.POST)
+    public String saveOC(@ModelAttribute("ostvareniCasovi") OstvareniCasovi ostvareniCasovi){
+        try{
+            daoOC.saveOC(ostvareniCasovi);
+            return "redirect:/ostvareniCasovi";
+        }catch(DataAccessException da){
+            System.out.println("Greska: " + da.getCause());
+            return "../error/error_OCP.html";
+        }
+
+    }
+
+    @RequestMapping("/editOstvareniCasovi/{ID_OSTVARENI_CASOVI}")
+    public ModelAndView showEditFormOC(@PathVariable(name = "ID_OSTVARENI_CASOVI") long ID_OSTVARENI_CASOVI){
+        ModelAndView mavOC = new ModelAndView("edit_ostvareniCasovi");
+        OstvareniCasovi ostvareniCasovi = daoOC.getOC(ID_OSTVARENI_CASOVI);
+        mavOC.addObject("ostvareniCasovi", ostvareniCasovi);
+
+        return mavOC;
+    }
+
+
+    @RequestMapping(value="/updateOstvareniCasovi", method = RequestMethod.POST)
+    public String updateOC(@ModelAttribute("ostvareniCasovi") OstvareniCasovi ostvareniCasovi) {
+        try {
+            daoOC.updateOC(ostvareniCasovi);
+            return "redirect:/ostvareniCasovi";
+        }catch (DataAccessException da){
+            System.out.println("Greska: " + da.getCause());
+            return "../error/error_UMN_OC.html";
+        }
+    }
+
+    @RequestMapping("/deleteOstvareniCasovi/{ID_OSTVARENI_CASOVI}")
+    public String deleteOC(@PathVariable(name = "ID_OSTVARENI_CASOVI") long ID_OSTVARENI_CASOVI) {
+        try {
+            daoOC.deleteOC(ID_OSTVARENI_CASOVI);
+            return "redirect:/ostvareniCasovi";
+        }catch (DataAccessException da){
+            System.out.println("Greska: " + da.getCause());
+            return "../error/error_delOC.html";
+        }
+    }
 
 }

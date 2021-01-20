@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>eRV : Koeficijent</title>
+    <title>eRV : Ostvareni casovi</title>
     <style>
         ul {
             list-style-type: none;
@@ -47,36 +47,42 @@
 
     </ul>
 
-    <div align="center" id="koeficijent">
-        <h1>Koeficijent</h1>
+    <div align="center" id="ostvareniCasovi">
+        <h1>Ostvareni casovi</h1>
         <br/><br/>
         <table border="1" cellpadding="10" class="fix">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Broj</th>
-                <th>Datum od</th>
-                <th>Datum do</th>
+                <th>Broj sati za dan</th>
+                <th>ID Mesecna evidencija</th>
+                <th>Mesec</th>
+                <th>ID Vrsta primanja</th>
+                <th>Naziv</th>
+                <th>Dan u mesecu</th>
+                <th>ID Ostvareni casovi</th>
                 <th>CRUD</th>
 
             </tr>
             </thead>
             <tbody>
-            <tr th:each="koeficijent : ${listKoeficijent}">
-                <td th:text="${koeficijent.ID_KOEFICIJENT}">ID</td>
-                <td th:text="${koeficijent.BROJ}">BROJ</td>
-                <td th:text="${koeficijent.DATUM_OD}">Datum od</td>
-                <td th:text="${koeficijent.DATUM_DO}">Datum do</td>
+            <tr th:each="ostvareniCasovi : ${listOstvareniCasovi}">
+                <td th:text="${ostvareniCasovi.BROJ_SATI_ZA_DAN}">Broj sati za dan</td>
+                <td th:text="${ostvareniCasovi.ID_MESECNA_EVIDENCIJA}">ID Mesecna evidencija</td>
+                <td th:text="${ostvareniCasovi.MESEC}">Mesec</td>
+                <td th:text="${ostvareniCasovi.ID_VRSTA_PRIMANJA}">ID Vrsta primanja</td>
+                <td th:text="${ostvareniCasovi.NAZIV}">Naziv meseca</td>
+                <td th:text="${ostvareniCasovi.DAN_U_MESECU}">Dan u mesecu</td>
+                <td th:text="${ostvareniCasovi.ID_OSTVARENI_CASOVI}">ID Ostvareni casovi</td>
 
                 <td>
-                    <a th:href="@{'/editKoeficijent/' + ${koeficijent.ID_KOEFICIJENT}}">Edit</a>
+                    <a th:href="@{'/editOstvareniCasovi/' + ${ostvareniCasovi.ID_OSTVARENI_CASOVI}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/deleteKoeficijent/' + ${koeficijent.ID_KOEFICIJENT}}">Delete</a>
+                    <a th:href="@{'/deleteOstvareniCasovi/' + ${ostvareniCasovi.ID_OSTVARENI_CASOVI}}">Delete</a>
                 </td>
             </tr>
             </tbody>
         </table>
-        <a href="/newKoeficijent">Dodaj novi koeficijent</a>
+        <a href="/newOstvareniCasovi">Dodaj nove ostvarene casove</a>
     </div>
 
 
